@@ -826,7 +826,8 @@ section.block.alt .pub{background:var(--paper);}
 .facility-card .text-link{margin-top:auto;}
 
 /* teaching labs: tabs + panels */
-.lab-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:28px;}
+.lab-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:28px;}
+@media (max-width:1000px){.lab-tabs{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media (max-width:760px){.lab-tabs{grid-template-columns:1fr;}}
 .lab-tab{
   position:relative;text-align:left;cursor:pointer;font-family:var(--sans);color:var(--ink);
@@ -848,6 +849,7 @@ section.block.alt .pub{background:var(--paper);}
 .lab-panel{scroll-margin-top:130px;animation:pagein .45s ease both;}
 .lab-panel[hidden]{display:none;}
 .lab-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start;}
+.lab-intro-solo{grid-template-columns:1fr;}
 @media (max-width:900px){.lab-intro{grid-template-columns:1fr;}}
 .lab-about,.lab-exps{background:var(--paper);border-radius:var(--radius-lg);padding:26px 28px;box-shadow:var(--shadow);}
 .lab-kicker{font-size:0.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;}
@@ -1095,6 +1097,47 @@ a.flash-item:hover span:last-of-type{color:var(--accent-text);text-decoration:un
   .flash-row[aria-hidden="true"]{display:none;}
 }
 
+/* ---------- internship opportunities (home + academics) ---------- */
+.intern-home{margin-top:48px;}
+.intern-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+@media (max-width:760px){.intern-grid{grid-template-columns:1fr;}}
+.intern-card{
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:28px 30px;
+  background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--accent);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow);
+}
+.intern-card h3{font-size:1.2rem;margin:0;}
+.intern-card p{color:var(--muted);margin:0 0 8px;}
+.intern-card .btn{margin-top:auto;}
+
+/* ---------- Ph.D. admissions box (home page) ---------- */
+/* light accent background with dark hero text: stays readable in every colour theme */
+.adm-block{padding-bottom:0;}
+.adm-card{
+  position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:center;
+  padding:36px 40px;border-radius:var(--radius-lg);border:2px solid var(--accent);color:var(--hero-bg);
+  background:linear-gradient(120deg, var(--accent-light), color-mix(in srgb, var(--accent-light) 50%, #fff));
+  box-shadow:0 22px 50px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.adm-badge{
+  display:inline-flex;align-items:center;gap:10px;padding:6px 14px;margin-bottom:14px;border-radius:999px;
+  background:var(--hero-bg);color:#fff;font-size:0.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+}
+.adm-card h2{color:var(--hero-bg);font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.2;margin-bottom:10px;}
+.adm-card p{color:var(--hero-bg);margin:0 0 14px;max-width:62ch;}
+.adm-points{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;margin:0;padding:0;font-weight:600;font-size:0.92rem;}
+.adm-points li{display:inline-flex;align-items:center;gap:8px;}
+.adm-points svg{width:18px;height:18px;flex:none;}
+.adm-actions{display:flex;flex-direction:column;gap:12px;}
+.adm-card .btn{justify-content:center;background:var(--hero-bg);border-color:var(--hero-bg);color:#fff;}
+.adm-card .btn:hover{background:var(--hero-bg-2);border-color:var(--hero-bg-2);}
+.adm-card .btn.ghost{background:transparent;border-color:var(--hero-bg);color:var(--hero-bg);}
+.adm-card .btn.ghost:hover{background:color-mix(in srgb, var(--hero-bg) 12%, transparent);border-color:var(--hero-bg);box-shadow:none;}
+@media (max-width:800px){
+  .adm-card{grid-template-columns:1fr;gap:22px;padding:28px 22px;}
+  .adm-actions{flex-direction:row;flex-wrap:wrap;}
+}
+
 /* ---------- symposium banner (home page) ---------- */
 .sym-block{padding-bottom:0;}
 .sym-card{
@@ -1259,9 +1302,9 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
   <div class="wrap flash-inner">
     <span class="flash-label"><span class="flash-dot" aria-hidden="true"></span>Flash news</span>
     <div class="flash-track">
-      <div class="flash-move" style="--dur:31s">
-        <div class="flash-row"><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Symposium</span><span>ANRF National Symposium on Multiphase Flow Modeling, Microfluidics, CFD, Advanced Materials and AI-Driven Simulation - December 3-4, 2026, IIT Dharwad</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="flash-sep" aria-hidden="true"></span><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Website</span><span>Visit the symposium website for programme details and updates</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-        <div class="flash-row" aria-hidden="true" inert><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Symposium</span><span>ANRF National Symposium on Multiphase Flow Modeling, Microfluidics, CFD, Advanced Materials and AI-Driven Simulation - December 3-4, 2026, IIT Dharwad</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="flash-sep" aria-hidden="true"></span><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Website</span><span>Visit the symposium website for programme details and updates</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="flash-move" style="--dur:45s">
+        <div class="flash-row"><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Symposium</span><span>ANRF National Symposium on Multiphase Flow Modeling, Microfluidics, CFD, Advanced Materials and AI-Driven Simulation - December 3-4, 2026, IIT Dharwad</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="flash-sep" aria-hidden="true"></span><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Website</span><span>Visit the symposium website for programme details and updates</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="flash-sep" aria-hidden="true"></span><a href="https://www.iitdh.ac.in/phd" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Admissions</span><span>Ph.D. in Chemical Engineering - admission details on the IIT Dharwad website</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <div class="flash-row" aria-hidden="true" inert><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Symposium</span><span>ANRF National Symposium on Multiphase Flow Modeling, Microfluidics, CFD, Advanced Materials and AI-Driven Simulation - December 3-4, 2026, IIT Dharwad</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="flash-sep" aria-hidden="true"></span><a href="https://mfmiitdh.github.io/MFMAI/" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Website</span><span>Visit the symposium website for programme details and updates</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="flash-sep" aria-hidden="true"></span><a href="https://www.iitdh.ac.in/phd" class="flash-item" target="_blank" rel="noopener"><span class="flash-tag">Admissions</span><span>Ph.D. in Chemical Engineering - admission details on the IIT Dharwad website</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       </div>
     </div>
   </div>
@@ -1353,6 +1396,23 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
           <div class="sym-count" data-start="2026-12-03" data-end="2026-12-04"><span class="sym-count-label">Starts in</span><span class="sym-tile"><b data-unit="d">&ndash;</b><i>Days</i></span><span class="sym-tile"><b data-unit="h">&ndash;</b><i>Hrs</i></span><span class="sym-tile"><b data-unit="m">&ndash;</b><i>Min</i></span><span class="sym-count-msg" hidden></span></div>
           <p>Bridging the gap between fundamental science and industrial innovation.</p>
           <div class="sym-actions"><a href="https://mfmiitdh.github.io/MFMAI/" class="btn" target="_blank" rel="noopener">Visit symposium website <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn ghost" href="#contact">Contact us</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block adm-block">
+    <div class="wrap">
+      <div class="adm-card reveal">
+        <div class="adm-main">
+          <div class="adm-badge"><span class="flash-dot" aria-hidden="true"></span>Ph.D. admissions</div>
+          <h2>Ph.D. in Chemical Engineering</h2>
+          <p>Work closely with faculty on innovative research projects with real-world impact.</p>
+          <ul class="adm-points"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full-time and part-time options</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>State-of-the-art research facilities</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Interdisciplinary research encouraged</span></li></ul>
+        </div>
+        <div class="adm-actions">
+          <a href="https://www.iitdh.ac.in/phd" class="btn" target="_blank" rel="noopener">Admission details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn ghost" href="#academics/eligibility">Check eligibility</a>
         </div>
       </div>
     </div>
@@ -1558,6 +1618,19 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
           <a class="cta-item" href="#contact"><span><b>Contact the office</b><small>chemicalengg.office@iitdh.ac.in</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
+      <div class="intern-home"><div class="section-head"><div class="kicker">Opportunities</div><h2>Internship opportunities</h2></div><div class="intern-grid">
+        <article class="intern-card reveal" style="--i:0">
+          <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <h3>Contact a faculty member</h3>
+          <p>Interested candidates can directly contact a faculty member by email, expressing their interest.</p>
+          <a href="#people/faculty" class="btn">Find faculty emails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
+        <article class="intern-card reveal" style="--i:1">
+          <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <h3>IIT Dharwad Summer Internship Program</h3>
+          <p>Interested candidates can also check the IIT Dharwad website for summer internship positions.</p>
+          <a href="https://www.iitdh.ac.in/academic-internship" class="btn" target="_blank" rel="noopener">Summer internship positions <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article></div></div>
     </div>
   </section>
 </div>
@@ -1724,7 +1797,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
             
           </div>
           <div class="designation">Assistant Professor</div>
-          <div class="profile-phd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Ph.D., IIT Madras, India</span></div><div class="profile-links"><a href="mailto:krishnajvj@iitdh.ac.in" class="profile-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>krishnajvj@iitdh.ac.in</span></a><a href="https://scholar.google.com/citations?hl=en&amp;user=40DfAuAAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" class="profile-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>Google Scholar</span></a></div>
+          <div class="profile-phd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Ph.D., IIT Madras, India</span></div><div class="profile-links"><a href="mailto:krishnajvj@iitdh.ac.in" class="profile-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>krishnajvj@iitdh.ac.in</span></a><a href="https://tanstack-start-ts.crest-lab.workers.dev/" class="profile-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>Personal webpage</span></a><a href="https://scholar.google.com/citations?hl=en&amp;user=40DfAuAAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" class="profile-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>Google Scholar</span></a></div>
         </div>
       </article></div>
     </div>
@@ -1800,10 +1873,6 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
         <figure class="batch-card reveal">
           <div class="media photo"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=1iWbhLtTIn3BULYq0slxfl2k3mm_Se2XP&sz=w800" alt="Batch 2023" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1iWbhLtTIn3BULYq0slxfl2k3mm_Se2XP&sz=w1800" data-view="https://drive.google.com/file/d/1iWbhLtTIn3BULYq0slxfl2k3mm_Se2XP/view" data-caption="Batch 2023" onerror="imgFail(this)"></div>
           <figcaption><h3>Batch 2023</h3><span class="muted">Faculty Advisor:</span> Dr. Ravi Chandra Dutta</figcaption>
-        </figure>
-        <figure class="batch-card reveal">
-          <div class="media photo"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=1N_XJvZwGHz7aYaCA7uETUmNJwBWWCB6k&sz=w800" alt="Batch 2022" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1N_XJvZwGHz7aYaCA7uETUmNJwBWWCB6k&sz=w1800" data-view="https://drive.google.com/file/d/1N_XJvZwGHz7aYaCA7uETUmNJwBWWCB6k/view" data-caption="Batch 2022" onerror="imgFail(this)"></div>
-          <figcaption><h3>Batch 2022</h3><span class="muted">Faculty Advisor:</span> Dr. Suvamay Jana</figcaption>
         </figure></div>
     </div>
   </section>
@@ -1941,7 +2010,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
       <h1>Academic Programs</h1>
       <p class="lead">Explore our chemical engineering programs, designed to foster innovation and excellence.</p>
     </div>
-  </section><div class="subnav"><div class="wrap"><a href="#academics/btech">B.Tech.</a><a href="#academics/phd">Ph.D.</a><a href="#academics/eligibility">Ph.D. eligibility</a></div></div>
+  </section><div class="subnav"><div class="wrap"><a href="#academics/btech">B.Tech.</a><a href="#academics/phd">Ph.D.</a><a href="#academics/eligibility">Ph.D. eligibility</a><a href="#academics/internships">Internships</a></div></div>
   <section class="block">
     <div class="wrap">
       <div class="section-head"><div class="kicker">Programs</div><h2>Two pathways into chemical engineering</h2></div>
@@ -2033,6 +2102,24 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
         <div class="theme-tile reveal" style="--i:2"><h4>Biocatalysis and Drug Discovery</h4><p>Designing biocatalysts for sustainable processes and pharmaceutical advancements.</p></div>
         <div class="theme-tile reveal" style="--i:0"><h4>Mechanism and Modeling of Chemical Processes</h4><p>Understanding and optimizing reaction mechanisms.</p></div>
         <div class="theme-tile reveal" style="--i:1"><h4>Colloids and Interface Science</h4><p>Studying interactions in colloidal systems for industrial and biomedical applications.</p></div></div>
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="section-head" id="academics/internships"><div class="kicker">Opportunities</div><h2>Internship opportunities</h2></div><div class="intern-grid">
+        <article class="intern-card reveal" style="--i:0">
+          <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <h3>Contact a faculty member</h3>
+          <p>Interested candidates can directly contact a faculty member by email, expressing their interest.</p>
+          <a href="#people/faculty" class="btn">Find faculty emails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
+        <article class="intern-card reveal" style="--i:1">
+          <span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <h3>IIT Dharwad Summer Internship Program</h3>
+          <p>Interested candidates can also check the IIT Dharwad website for summer internship positions.</p>
+          <a href="https://www.iitdh.ac.in/academic-internship" class="btn" target="_blank" rel="noopener">Summer internship positions <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article></div>
     </div>
   </section>
 </div>
@@ -2541,7 +2628,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
   </section><div class="subnav"><div class="wrap"><a href="#facilities/research-facilities">Research Facilities (DCIF)</a><a href="#facilities/scif">SCIF</a><a href="#facilities/ug-labs">UG Laboratories</a><a href="#facilities/research-labs">Research Labs</a></div></div>
   <section class="block">
     <div class="wrap">
-      <div class="fact-strip reveal"><div class="fact"><div class="fact-v">28</div><div class="fact-k">DCIF instruments</div></div><div class="fact"><div class="fact-v">3</div><div class="fact-k">Teaching laboratories</div></div><div class="fact"><div class="fact-v">37</div><div class="fact-k">Teaching lab setups</div></div><div class="fact"><div class="fact-v">4</div><div class="fact-k">Faculty research labs</div></div></div>
+      <div class="fact-strip reveal"><div class="fact"><div class="fact-v">28</div><div class="fact-k">DCIF instruments</div></div><div class="fact"><div class="fact-v">4</div><div class="fact-k">Teaching laboratories</div></div><div class="fact"><div class="fact-v">37</div><div class="fact-k">Teaching lab setups</div></div><div class="fact"><div class="fact-v">4</div><div class="fact-k">Faculty research labs</div></div></div>
       <div class="facility-cards">
         <a class="facility-card reveal" href="#facilities/research-facilities" style="--i:0">
           <div class="facility-card-top"><span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="1.8" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="currentColor" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" fill="none" stroke="currentColor" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><span class="facility-count">28 instruments</span></div>
@@ -2552,7 +2639,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
           <h3>Sophisticated Central Instrumentation Facility (SCIF)</h3><p>IIT Dharwad&#x27;s institute-level central instrumentation facility, complementing the department&#x27;s DCIF.</p><span class="text-link">Explore <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a class="facility-card reveal" href="#facilities/ug-labs" style="--i:2">
-          <div class="facility-card-top"><span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span class="facility-count">3 labs</span></div>
+          <div class="facility-card-top"><span class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span class="facility-count">4 labs</span></div>
           <h3>UG Laboratories</h3><p>Our undergraduate laboratories provide hands-on learning and practical experience in chemical engineering experiments, supporting strong academic growth.</p><span class="text-link">Explore <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a class="facility-card reveal" href="#facilities/research-labs" style="--i:3">
@@ -2708,6 +2795,9 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
         </button>
         <button class="lab-tab" role="tab" aria-selected="false" data-lab="3">
           <b>Chemical Engineering Lab - 3</b><span>Reaction Engineering &amp; Mass Transfer</span>
+        </button>
+        <button class="lab-tab" role="tab" aria-selected="false" data-lab="4">
+          <b>Chemical Engineering Lab - 4</b><span>Process Control</span>
         </button></div>
       
       <article class="lab-panel" id="facilities/lab-1" data-lab="1" role="tabpanel">
@@ -2716,10 +2806,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
             <div class="lab-kicker">Fluid Mechanics &amp; Thermodynamics</div>
             <h3>Chemical Engineering Lab - 1</h3>
             <p>Chemical Engineering Lab - 1 is designed to provide hands-on experience in both Fluid Mechanics (FM) and Thermodynamics (Thermo) experiments. This laboratory aims to bridge the gap between theoretical concepts and practical applications, enabling students to gain critical insights into key engineering principles.</p><p>The experiments are structured to enhance problem-solving skills and foster a deeper understanding of the principles of fluid flow, energy conversion, and heat transfer.</p>
-            <div class="lab-stats">
-              <div><b>13</b><span>Experiments</span></div>
-              <div><b>14</b><span>Equipment setups</span></div>
-            </div>
+            <div class="lab-stats"><div><b>13</b><span>Experiments</span></div><div><b>14</b><span>Equipment setups</span></div></div>
           </div>
           <div class="lab-exps">
             <div class="lab-exps-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>List of experiments</div>
@@ -2799,10 +2886,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
             <div class="lab-kicker">Strength of Materials &amp; Heat Transfer</div>
             <h3>Chemical Engineering Lab - 2</h3>
             <p>Chemical Engineering Lab - 2 focuses on Strength of Materials and Heat Transfer experiments. This lab provides students with practical exposure to critical engineering concepts such as material behaviour under stress, heat transfer mechanisms, and thermal performance in various systems. These experiments aim to develop analytical thinking and technical skills by integrating theoretical principles with real-world applications.</p><p>The lab is designed to prepare students for challenges in engineering design and problem-solving through a comprehensive set of hands-on activities.</p>
-            <div class="lab-stats">
-              <div><b>14</b><span>Experiments</span></div>
-              <div><b>13</b><span>Equipment setups</span></div>
-            </div>
+            <div class="lab-stats"><div><b>14</b><span>Experiments</span></div><div><b>13</b><span>Equipment setups</span></div></div>
           </div>
           <div class="lab-exps">
             <div class="lab-exps-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>List of experiments</div>
@@ -2878,10 +2962,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
             <div class="lab-kicker">Reaction Engineering &amp; Mass Transfer</div>
             <h3>Chemical Engineering Lab - 3</h3>
             <p>Chemical Engineering Lab - 3 provides practical training in Reaction Engineering and Mass Transfer experiments. This laboratory emphasizes understanding reaction kinetics, residence time distribution (RTD), and separation processes, offering students invaluable insights into fundamental and applied chemical engineering concepts. The experiments are designed to develop technical skills and foster a deeper appreciation of reaction mechanisms and mass transfer operations.</p><p>The lab prepares students for real-world challenges by combining theoretical knowledge with hands-on experience in advanced chemical engineering processes.</p>
-            <div class="lab-stats">
-              <div><b>13</b><span>Experiments</span></div>
-              <div><b>10</b><span>Equipment setups</span></div>
-            </div>
+            <div class="lab-stats"><div><b>13</b><span>Experiments</span></div><div><b>10</b><span>Equipment setups</span></div></div>
           </div>
           <div class="lab-exps">
             <div class="lab-exps-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>List of experiments</div>
@@ -2939,6 +3020,16 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
           <figcaption>Fixed bed adsorption unit</figcaption>
         </figure></div>
       </article>
+      <article class="lab-panel" id="facilities/lab-4" data-lab="4" role="tabpanel" hidden>
+        <div class="lab-intro lab-intro-solo">
+          <div class="lab-about">
+            <div class="lab-kicker">Process Control</div>
+            <h3>Chemical Engineering Lab - 4</h3>
+            <p>Chemical Engineering Lab - 4 is the department&#x27;s Process Control laboratory, offering undergraduate students practical training in process control.</p>
+            
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -2990,7 +3081,7 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
       <h1>Gallery &amp; Student Activities</h1>
       <p class="lead">Moments from the department: talks, visits, sports, conferences and student achievements.</p>
     </div>
-  </section><div class="subnav"><div class="wrap"><a href="#gallery/department">Department</a><a href="#gallery/students">Student activities</a></div></div>
+  </section><div class="subnav"><div class="wrap"><a href="#gallery/department">Department</a><a href="#gallery/students">Student activities</a><a href="#gallery/phd">PhD students</a></div></div>
   <section class="block">
     <div class="wrap">
       <div class="proj-tools">
@@ -3109,9 +3200,97 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
     <div class="wrap">
       <div class="proj-tools">
         <div class="section-head" id="gallery/students"><div class="kicker">Students</div><h2>Student activities</h2></div>
-        <div class="filters" role="group" aria-label="Filter student activities"><button class="filter act-filter active" data-grid="student-grid" data-cat="all">All <span>12</span></button><button class="filter act-filter" data-grid="student-grid" data-cat="conference">Conferences <span>5</span></button><button class="filter act-filter" data-grid="student-grid" data-cat="award">Awards <span>3</span></button><button class="filter act-filter" data-grid="student-grid" data-cat="internship">Internships <span>2</span></button><button class="filter act-filter" data-grid="student-grid" data-cat="sports-culture">Sports &amp; Culture <span>2</span></button></div>
+        <div class="filters" role="group" aria-label="Filter student activities"><button class="filter act-filter active" data-grid="student-grid" data-cat="all">All <span>6</span></button><button class="filter act-filter" data-grid="student-grid" data-cat="award">Awards <span>2</span></button><button class="filter act-filter" data-grid="student-grid" data-cat="internship">Internships <span>2</span></button><button class="filter act-filter" data-grid="student-grid" data-cat="sports-culture">Sports &amp; Culture <span>2</span></button></div>
       </div>
       <div class="act-grid" id="student-grid">
+        <article class="act-card reveal" data-cat="internship" style="--i:0">
+          <div class="act-media">
+            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ&sz=w800" alt="Internship at Siemens" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ&sz=w1800" data-view="https://drive.google.com/file/d/1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ/view" data-caption="Internship at Siemens" onerror="imgFail(this)"></div>
+            <span class="act-cat cat-internship"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Internship</span>
+            
+          </div>
+          <div class="act-body">
+            <div class="act-when">2024</div>
+            <h3>Internship at Siemens</h3>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Ms. Sai Dhruthi &amp; Mr. Md Inzamamul Haque (Batch 2022)</span></div>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Bengaluru</span></div>
+          </div>
+        </article>
+        <article class="act-card reveal" data-cat="internship" style="--i:1">
+          <div class="act-media">
+            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT&sz=w800" alt="Internship at IIT Ropar" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT&sz=w1800" data-view="https://drive.google.com/file/d/1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT/view" data-caption="Internship at IIT Ropar" onerror="imgFail(this)"></div>
+            <span class="act-cat cat-internship"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Internship</span>
+            
+          </div>
+          <div class="act-body">
+            <div class="act-when">2024</div>
+            <h3>Internship at IIT Ropar</h3>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Ms. Khushbu Rani (Batch 2022)</span></div>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Ropar</span></div>
+          </div>
+        </article>
+        <article class="act-card reveal" data-cat="sports-culture" style="--i:2">
+          <div class="act-media">
+            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5&sz=w800" alt="Inter-IIT Cultural Meet 7.0: quiz contingent" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5&sz=w1800" data-view="https://drive.google.com/file/d/1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5/view" data-caption="Inter-IIT Cultural Meet 7.0: quiz contingent" onerror="imgFail(this)"></div>
+            <span class="act-cat cat-sports-culture"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Sports &amp; Culture</span>
+            
+          </div>
+          <div class="act-body">
+            <div class="act-when">2024</div>
+            <h3>Inter-IIT Cultural Meet 7.0: quiz contingent</h3>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Led by Mr. Singhal Gaurav Riteshkumar (Batch 2022)</span></div>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Patna</span></div>
+          </div>
+        </article>
+        <article class="act-card reveal" data-cat="award" style="--i:0">
+          <div class="act-media">
+            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz&sz=w800" alt="Top 20 of 102 teams, Inter-IIT quiz" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz&sz=w1800" data-view="https://drive.google.com/file/d/1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz/view" data-caption="Top 20 of 102 teams, Inter-IIT quiz" onerror="imgFail(this)"></div>
+            <span class="act-cat cat-award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Award</span>
+            
+          </div>
+          <div class="act-body">
+            <div class="act-when">2024</div>
+            <h3>Top 20 of 102 teams, Inter-IIT quiz</h3>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>3rd-year UG students</span></div>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Patna</span></div>
+          </div>
+        </article>
+        <article class="act-card reveal" data-cat="sports-culture" style="--i:1">
+          <div class="act-media">
+            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP&sz=w800" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP&sz=w1800" data-view="https://drive.google.com/file/d/19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div>
+            <span class="act-cat cat-sports-culture"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Sports &amp; Culture</span>
+            <div class="act-thumbs"><div class="media thumb"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=1zVb6QRwUOPaHXN3MiGcSlgXB5ImWQZn1&sz=w200" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1zVb6QRwUOPaHXN3MiGcSlgXB5ImWQZn1&sz=w1800" data-view="https://drive.google.com/file/d/1zVb6QRwUOPaHXN3MiGcSlgXB5ImWQZn1/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div><div class="media thumb"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=1k9FMJDTrE6RdRF3yLPHEG9CETCgUHger&sz=w200" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1k9FMJDTrE6RdRF3yLPHEG9CETCgUHger&sz=w1800" data-view="https://drive.google.com/file/d/1k9FMJDTrE6RdRF3yLPHEG9CETCgUHger/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div><div class="media thumb"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=13OEza98HInWyPJn1EuzMmO0UYnVC9iwv&sz=w200" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=13OEza98HInWyPJn1EuzMmO0UYnVC9iwv&sz=w1800" data-view="https://drive.google.com/file/d/13OEza98HInWyPJn1EuzMmO0UYnVC9iwv/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div></div>
+          </div>
+          <div class="act-body">
+            <div class="act-when">2024</div>
+            <h3>57th Inter-IIT Sports Meet</h3>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>UG students</span></div>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Kanpur</span></div>
+          </div>
+        </article>
+        <article class="act-card reveal" data-cat="award" style="--i:2">
+          <div class="act-media">
+            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni&sz=w800" alt="3rd place in &quot;Srijan&quot; Hindi writing" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni&sz=w1800" data-view="https://drive.google.com/file/d/17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni/view" data-caption="3rd place in &quot;Srijan&quot; Hindi writing" onerror="imgFail(this)"></div>
+            <span class="act-cat cat-award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Award</span>
+            
+          </div>
+          <div class="act-body">
+            <div class="act-when">2024</div>
+            <h3>3rd place in &quot;Srijan&quot; Hindi writing</h3>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Mr. Ashmit Singh (Batch 2024)</span></div>
+            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Hindi Diwas, IIT Dharwad</span></div>
+          </div>
+        </article></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="proj-tools">
+        <div class="section-head" id="gallery/phd"><div class="kicker">PhD students</div><h2>PhD student activities</h2></div>
+        <div class="filters" role="group" aria-label="Filter PhD student activities"><button class="filter act-filter active" data-grid="phd-grid" data-cat="all">All <span>6</span></button><button class="filter act-filter" data-grid="phd-grid" data-cat="conference">Conferences <span>5</span></button><button class="filter act-filter" data-grid="phd-grid" data-cat="award">Awards <span>1</span></button></div>
+      </div>
+      <div class="act-grid" id="phd-grid">
         <article class="act-card reveal" data-cat="conference" style="--i:0">
           <div class="act-media">
             <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=13mfsrrtvKFtvuSWUClhT8I9HbMkXwKBQ&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=13mfsrrtvKFtvuSWUClhT8I9HbMkXwKBQ&sz=w800" alt="Presentation at MOFES&#x27;26" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=13mfsrrtvKFtvuSWUClhT8I9HbMkXwKBQ&sz=w1800" data-view="https://drive.google.com/file/d/13mfsrrtvKFtvuSWUClhT8I9HbMkXwKBQ/view" data-caption="Presentation at MOFES&#x27;26" onerror="imgFail(this)"></div>
@@ -3136,84 +3315,6 @@ a,button,.lab-tab,.filter{-webkit-user-select:text;user-select:text;}
             <h3>Presentation at iCOM 2025</h3>
             <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Mr. Manohar Jammula</span></div>
             <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Guwahati</span></div>
-          </div>
-        </article>
-        <article class="act-card reveal" data-cat="internship" style="--i:2">
-          <div class="act-media">
-            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ&sz=w800" alt="Internship at Siemens" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ&sz=w1800" data-view="https://drive.google.com/file/d/1WmHleDrTSplqbQ83gz1MJ54liglLiCwQ/view" data-caption="Internship at Siemens" onerror="imgFail(this)"></div>
-            <span class="act-cat cat-internship"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Internship</span>
-            
-          </div>
-          <div class="act-body">
-            <div class="act-when">2024</div>
-            <h3>Internship at Siemens</h3>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Ms. Sai Dhruthi &amp; Mr. Md Inzamamul Haque (Batch 2022)</span></div>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Bengaluru</span></div>
-          </div>
-        </article>
-        <article class="act-card reveal" data-cat="internship" style="--i:0">
-          <div class="act-media">
-            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT&sz=w800" alt="Internship at IIT Ropar" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT&sz=w1800" data-view="https://drive.google.com/file/d/1tgn2srlB6qyfGLvvMALlIqbH0EuES-rT/view" data-caption="Internship at IIT Ropar" onerror="imgFail(this)"></div>
-            <span class="act-cat cat-internship"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Internship</span>
-            
-          </div>
-          <div class="act-body">
-            <div class="act-when">2024</div>
-            <h3>Internship at IIT Ropar</h3>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Ms. Khushbu Rani (Batch 2022)</span></div>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Ropar</span></div>
-          </div>
-        </article>
-        <article class="act-card reveal" data-cat="sports-culture" style="--i:1">
-          <div class="act-media">
-            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5&sz=w800" alt="Inter-IIT Cultural Meet 7.0: quiz contingent" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5&sz=w1800" data-view="https://drive.google.com/file/d/1cA4tscLVm6KygCVzmozmXSv_cC8m4oL5/view" data-caption="Inter-IIT Cultural Meet 7.0: quiz contingent" onerror="imgFail(this)"></div>
-            <span class="act-cat cat-sports-culture"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Sports &amp; Culture</span>
-            
-          </div>
-          <div class="act-body">
-            <div class="act-when">2024</div>
-            <h3>Inter-IIT Cultural Meet 7.0: quiz contingent</h3>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Led by Mr. Singhal Gaurav Riteshkumar (Batch 2022)</span></div>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Patna</span></div>
-          </div>
-        </article>
-        <article class="act-card reveal" data-cat="award" style="--i:2">
-          <div class="act-media">
-            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz&sz=w800" alt="Top 20 of 102 teams, Inter-IIT quiz" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz&sz=w1800" data-view="https://drive.google.com/file/d/1fgi4UNnrcAKV1o2XOHjhFcD0LDA7-Cmz/view" data-caption="Top 20 of 102 teams, Inter-IIT quiz" onerror="imgFail(this)"></div>
-            <span class="act-cat cat-award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Award</span>
-            
-          </div>
-          <div class="act-body">
-            <div class="act-when">2024</div>
-            <h3>Top 20 of 102 teams, Inter-IIT quiz</h3>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>3rd-year UG students</span></div>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Patna</span></div>
-          </div>
-        </article>
-        <article class="act-card reveal" data-cat="sports-culture" style="--i:0">
-          <div class="act-media">
-            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP&sz=w800" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP&sz=w1800" data-view="https://drive.google.com/file/d/19f1lss8NJ2Y76xaOV9UGe-sEPMx-rbVP/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div>
-            <span class="act-cat cat-sports-culture"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Sports &amp; Culture</span>
-            <div class="act-thumbs"><div class="media thumb"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=1zVb6QRwUOPaHXN3MiGcSlgXB5ImWQZn1&sz=w200" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1zVb6QRwUOPaHXN3MiGcSlgXB5ImWQZn1&sz=w1800" data-view="https://drive.google.com/file/d/1zVb6QRwUOPaHXN3MiGcSlgXB5ImWQZn1/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div><div class="media thumb"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=1k9FMJDTrE6RdRF3yLPHEG9CETCgUHger&sz=w200" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=1k9FMJDTrE6RdRF3yLPHEG9CETCgUHger&sz=w1800" data-view="https://drive.google.com/file/d/1k9FMJDTrE6RdRF3yLPHEG9CETCgUHger/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div><div class="media thumb"><span class="fb fb-icon" aria-hidden="true"></span><img src="https://drive.google.com/thumbnail?id=13OEza98HInWyPJn1EuzMmO0UYnVC9iwv&sz=w200" alt="57th Inter-IIT Sports Meet" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=13OEza98HInWyPJn1EuzMmO0UYnVC9iwv&sz=w1800" data-view="https://drive.google.com/file/d/13OEza98HInWyPJn1EuzMmO0UYnVC9iwv/view" data-caption="57th Inter-IIT Sports Meet" onerror="imgFail(this)"></div></div>
-          </div>
-          <div class="act-body">
-            <div class="act-when">2024</div>
-            <h3>57th Inter-IIT Sports Meet</h3>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>UG students</span></div>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>IIT Kanpur</span></div>
-          </div>
-        </article>
-        <article class="act-card reveal" data-cat="award" style="--i:1">
-          <div class="act-media">
-            <div class="media photo fit"><span class="fb fb-icon" aria-hidden="true"></span><img class="media-bg" src="https://drive.google.com/thumbnail?id=17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni&sz=w48" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><img src="https://drive.google.com/thumbnail?id=17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni&sz=w800" alt="3rd place in &quot;Srijan&quot; Hindi writing" loading="lazy" referrerpolicy="no-referrer" data-full="https://drive.google.com/thumbnail?id=17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni&sz=w1800" data-view="https://drive.google.com/file/d/17LujDcglgZ-H0d4u8xjTLjxbIlS_wnni/view" data-caption="3rd place in &quot;Srijan&quot; Hindi writing" onerror="imgFail(this)"></div>
-            <span class="act-cat cat-award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Award</span>
-            
-          </div>
-          <div class="act-body">
-            <div class="act-when">2024</div>
-            <h3>3rd place in &quot;Srijan&quot; Hindi writing</h3>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Mr. Ashmit Singh (Batch 2024)</span></div>
-            <div class="act-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Hindi Diwas, IIT Dharwad</span></div>
           </div>
         </article>
         <article class="act-card reveal" data-cat="conference" style="--i:2">
